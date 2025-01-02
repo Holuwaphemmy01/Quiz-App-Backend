@@ -1,7 +1,8 @@
 package app.services.login;
 
 import app.dtos.request.LoginRequest;
+import app.dtos.response.LoginResponse;
 
 public interface LoginService {
-    String login(LoginRequest loginRequest);
+    LoginResponse login(LoginRequest loginRequest);
 }

@@ -1,6 +1,7 @@
 package app.services.login;
 
 import app.dtos.request.LoginRequest;
+import app.dtos.response.LoginResponse;
 import app.models.Users;
 import app.repositories.UsersRepository;
 import app.services.password.HashPassword;
@@ -16,12 +17,12 @@ public class LoginServiceImpl implements LoginService {
     private HashPassword hashPassword;
 
     @Override
-    public String login(LoginRequest loginRequest) {
+    public LoginResponse login(LoginRequest loginRequest) {
         fieldValidation(loginRequest);
         return dataVerification(loginRequest);
-
-
     }
+
+
 
 
 
@@ -35,11 +36,15 @@ public class LoginServiceImpl implements LoginService {
         if(loginRequest.getUsername().isBlank() || loginRequest.getPassword().isBlank()) throw new IllegalArgumentException("field cannot be empty");
     }
 
-    private String dataVerification(LoginRequest loginRequest) {
+    private LoginResponse dataVerification(LoginRequest loginRequest) {
         Users response = usersRepository.findByUserName(loginRequest.getUsername());
         if(response == null) throw new IllegalArgumentException("user not found");
 
         if(!hashPassword.checkPassword(loginRequest.getPassword(), response.getPassword())) throw new IllegalArgumentException("wrong password");
-        return response.getUserName();
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setUserName(response.getUserName());
+        loginResponse.setCurrentLevel(response.getCurrentLevel());
+        return loginResponse;
+
     }
 }

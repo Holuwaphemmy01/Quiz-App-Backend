@@ -1,4 +1,4 @@
-package app.services.register;
+package app.services.userServices.register;
 
 import app.dtos.request.RegisterRequest;
 

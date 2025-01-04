@@ -1,4 +1,4 @@
-package app.services.password;
+package app.services.userServices.password;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;

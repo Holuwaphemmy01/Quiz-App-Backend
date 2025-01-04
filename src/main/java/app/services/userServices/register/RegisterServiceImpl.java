@@ -1,10 +1,10 @@
-package app.services.register;
+package app.services.userServices.register;
 
 
 import app.dtos.request.RegisterRequest;
 import app.models.Users;
 import app.repositories.UsersRepository;
-import app.services.password.HashPassword;
+import app.services.userServices.password.HashPassword;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

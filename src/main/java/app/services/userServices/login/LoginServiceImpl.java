@@ -1,10 +1,10 @@
-package app.services.login;
+package app.services.userServices.login;
 
 import app.dtos.request.LoginRequest;
 import app.dtos.response.LoginResponse;
 import app.models.Users;
 import app.repositories.UsersRepository;
-import app.services.password.HashPassword;
+import app.services.userServices.password.HashPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +45,5 @@ public class LoginServiceImpl implements LoginService {
         loginResponse.setUserName(response.getUserName());
         loginResponse.setCurrentLevel(response.getCurrentLevel());
         return loginResponse;
-
     }
 }

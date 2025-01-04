@@ -1,8 +1,8 @@
 package app.services.register;
 
 import app.dtos.request.RegisterRequest;
-import app.models.Users;
 import app.repositories.UsersRepository;
+import app.services.userServices.register.RegisterServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

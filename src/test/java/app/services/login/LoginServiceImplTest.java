@@ -1,6 +1,8 @@
 package app.services.login;
 
 import app.dtos.request.LoginRequest;
+import app.dtos.response.LoginResponse;
+import app.services.userServices.login.LoginService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,8 +51,8 @@ public class LoginServiceImplTest {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername("Fammo");
         loginRequest.setPassword("Oluwafemi");
-        String response = loginService.login(loginRequest);
-        assertEquals("Fammo", response);
+        LoginResponse response = loginService.login(loginRequest);
+        assertEquals("Fammo", response.getUserName());
     }
 
 

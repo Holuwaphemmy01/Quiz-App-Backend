@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class LoginResponse {
     private String userName;
-    private int currentLevel;
+    private long currentLevel;
 }

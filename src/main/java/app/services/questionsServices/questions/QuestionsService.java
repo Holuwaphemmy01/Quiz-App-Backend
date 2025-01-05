@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface QuestionsService {
     List<Questions> getAllQuestions(QuestionsRequest questionsRequest);
-    void addQuestion(Questions questions);
 }

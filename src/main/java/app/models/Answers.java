@@ -5,8 +5,11 @@ import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "answers")
 public class Answers {
+    @Column(name = "answer")
     private String answer;
     @Id
-    private Long currentLevel;
+    @Column(name = "id")
+    private long currentLevel;
 }

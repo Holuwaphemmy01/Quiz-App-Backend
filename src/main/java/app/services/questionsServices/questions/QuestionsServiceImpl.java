@@ -3,9 +3,8 @@ package app.services.questionsServices.questions;
 
 import app.dtos.request.QuestionsRequest;
 import app.models.Questions;
-import app.models.Users;
 import app.repositories.QuestionsRepository;
-import app.repositories.UsersRepository;
+import app.services.userServices.findUser.FindUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +19,7 @@ public class QuestionsServiceImpl implements QuestionsService {
     private QuestionsRepository questionsRepository;
 
     @Autowired
-    private UsersRepository usersRepository;
+    private FindUserServiceImpl findUserService;
 
 
     @Override
@@ -28,10 +27,9 @@ public class QuestionsServiceImpl implements QuestionsService {
         if (questionsRequest == null) throw new IllegalArgumentException("field is empty");
         if (questionsRequest.getUserName().isBlank()) throw new IllegalArgumentException("field is empty");
 
-        Users response = usersRepository.findByUserName(questionsRequest.getUserName());
-       int currentLevel = response.getCurrentLevel();
-       int startQuestions = 0;
-       int endQuestions = 0;
+       long currentLevel = findUserService.findUserByUserName(questionsRequest.getUserName());
+       long startQuestions = 0;
+       long endQuestions = 0;
 
 
        for(int count =1; count < 11; count++) {
@@ -50,8 +48,4 @@ public class QuestionsServiceImpl implements QuestionsService {
         return questionsList;
     }
 
-    @Override
-    public void addQuestion(Questions questions) {
-        questionsRepository.save(questions);
-    }
 }

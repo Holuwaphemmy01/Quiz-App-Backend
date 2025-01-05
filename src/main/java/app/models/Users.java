@@ -2,9 +2,9 @@ package app.models;
 
 
 import jakarta.persistence.CollectionTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+//import jakarta.persistence.Column;
+//import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jdk.jfr.Relational;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,7 +28,7 @@ public class Users {
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "current_level", nullable = false)
-    private int currentLevel=1;
+    private long currentLevel=1;
 
 
 }

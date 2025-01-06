@@ -42,7 +42,6 @@ public class QuestionsServiceImpl implements QuestionsService {
         List<Questions> questionsList = new ArrayList<>();
        for(long count = startQuestions; count <= endQuestions; count++) {
            Optional<Questions> questions = questionsRepository.findById(count);
-           System.out.println(questions.get().getQuestion());
            if(questions.isPresent()) questionsList.add(questions.get());
        }
         return questionsList;

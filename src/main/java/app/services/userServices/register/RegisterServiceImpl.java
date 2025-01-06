@@ -58,8 +58,9 @@ public class RegisterServiceImpl implements RegisterService {
         if (registerRequest.getFirstName().isBlank()) throw new IllegalArgumentException("First name cannot be blank");
         if (registerRequest.getLastName().isBlank()) throw new IllegalArgumentException("Last name cannot be blank");
         if (registerRequest.getEmail().isBlank()) throw new IllegalArgumentException("Email cannot be blank");
+        if(registerRequest.getPassword().length() < 6) throw new IllegalArgumentException("Password must be at least 6 characters");
         if(!registerRequest.getEmail().contains("@") || !registerRequest.getEmail().contains(".")) throw new IllegalArgumentException("Invalid email format");
-        if(registerRequest.getPassword().isBlank() || registerRequest.getPassword().length() < 6 || registerRequest.getPassword().length() >16) throw new IllegalArgumentException("Password cannot be blank");
+        if(registerRequest.getPassword().isBlank()) throw new IllegalArgumentException("Password cannot be blank");
         if(registerRequest.getUserName().isBlank()) throw new IllegalArgumentException("Username cannot be blank");
         if(registerRequest.getUserName().length() < 3) throw new IllegalArgumentException("Username must be at least 3 characters");
         if(registerRequest.getPassword().length() > 10) throw new IllegalArgumentException("Password must not be more than 10 characters");

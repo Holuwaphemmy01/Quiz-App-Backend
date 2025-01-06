@@ -4,6 +4,7 @@ import app.dtos.request.RegisterRequest;
 import app.repositories.UsersRepository;
 import app.services.userServices.register.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +21,11 @@ public class RegisterController {
     private UsersRepository usersRepository;
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
         try{
-            return registerService.register(registerRequest);
+            return ResponseEntity.ok( registerService.register(registerRequest));
         }catch (Exception e){
-            return e.getMessage();
+          return   ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

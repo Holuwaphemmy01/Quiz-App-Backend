@@ -32,12 +32,53 @@ public class QuestionsServiceImpl implements QuestionsService {
        long endQuestions = 0;
 
 
-       for(int count =1; count < 11; count++) {
-           if(count == currentLevel) {
-               startQuestions = currentLevel;
-               endQuestions = currentLevel + 9;
-           }
+       if(currentLevel == 1){
+           startQuestions = 1;
+           endQuestions = 10;
        }
+
+       if(currentLevel == 2){
+           startQuestions = 11;
+           endQuestions = 20;
+       }
+
+        if(currentLevel == 3){
+            startQuestions = 21;
+            endQuestions = 30;
+        }
+
+        if(currentLevel == 4){
+            startQuestions = 31;
+            endQuestions = 40;
+        }
+
+        if(currentLevel == 5){
+            startQuestions = 41;
+            endQuestions = 50;
+        }
+
+        if(currentLevel == 6){
+            startQuestions = 51;
+            endQuestions = 60;
+        }
+        if(currentLevel == 7){
+            startQuestions = 61;
+            endQuestions = 70;
+        }
+        if(currentLevel == 8){
+            startQuestions = 71;
+            endQuestions = 80;
+        }
+        if(currentLevel == 9){
+            startQuestions = 81;
+            endQuestions = 90;
+        }
+        if(currentLevel == 10){
+            startQuestions = 91;
+            endQuestions = 100;
+        }
+
+
 
         List<Questions> questionsList = new ArrayList<>();
        for(long count = startQuestions; count <= endQuestions; count++) {

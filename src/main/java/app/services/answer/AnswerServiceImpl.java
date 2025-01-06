@@ -4,6 +4,7 @@ import app.dtos.request.AnswerRequest;
 import app.models.Answers;
 import app.repositories.AnswersRepository;
 import app.services.userServices.findUserCurrentLevel.FindCurrentLevelServiceImpl;
+import app.services.userServices.nextLevelSetUp.UserNextLevelServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +23,17 @@ public class AnswerServiceImpl implements AnswerService {
     public String checkAnswer(AnswerRequest answerRequest) {
         long response = findCurrentLevelService.getCurrentLevel(answerRequest.getUserName());
         Optional<Answers> answersResponse =  answersRepository.findById(response);
-       String realAnswer =   answersResponse.get().getAnswer();
+       String realAnswer = answersResponse.get().getAnswer();
        int count = 0;
 
-       if(realAnswer.equalsIgnoreCase(answerRequest.getSelectedOptions()))
+       if(realAnswer.equalsIgnoreCase(answerRequest.getSelectedOptions())){
+           UserNextLevelServiceImpl userNextLevelService = new UserNextLevelServiceImpl();
+           userNextLevelService.setNextLevel(answerRequest.getUserName());
+           return "Congratulations! You have done well";
+       }
 
-        return "Congratulations! You have done well";
        else {
-           for(int index= 0; index <= answerRequest.getSelectedOptions().length(); index++) {
+           for(int index= 0; index < answerRequest.getSelectedOptions().length(); index++) {
                if(realAnswer.charAt(index) == answerRequest.getSelectedOptions().charAt(index)) {
                     count++;
                }

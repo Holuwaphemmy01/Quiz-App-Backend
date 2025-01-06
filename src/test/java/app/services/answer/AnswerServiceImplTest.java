@@ -26,7 +26,7 @@ public class AnswerServiceImplTest {
     public void testToPassWrongOptionsAtLevelOneAndTheCurrentLevelWillStillBeTheSame(){
         AnswerRequest answerRequest = new AnswerRequest();
         answerRequest.setUserName("Akinzo");
-        answerRequest.setSelectedOptions("abcacddacba");
+        answerRequest.setSelectedOptions("abcacddcaa");
         String response = answerService.checkAnswer(answerRequest);
         System.out.println(response);
 

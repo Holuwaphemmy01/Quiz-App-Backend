@@ -15,6 +15,7 @@ public class FindCurrentLevelServiceImpl implements FindCurrentLevelService {
         boolean userExist = usersRepository.existsByUserName(userName);
         if (!userExist) throw new IllegalArgumentException("User does not exist");
         Users response = usersRepository.findByUserName(userName);
+        if (response == null) throw new IllegalArgumentException("User does not exist");
         return response.getCurrentLevel();
     }
 }

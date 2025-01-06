@@ -19,6 +19,10 @@ public class AnswerServiceImpl implements AnswerService {
     @Autowired
     private FindCurrentLevelServiceImpl findCurrentLevelService;
 
+    @Autowired
+    private  UserNextLevelServiceImpl userNextLevelService;
+
+
     @Override
     public String checkAnswer(AnswerRequest answerRequest) {
         long response = findCurrentLevelService.getCurrentLevel(answerRequest.getUserName());
@@ -27,7 +31,6 @@ public class AnswerServiceImpl implements AnswerService {
        int count = 0;
 
        if(realAnswer.equalsIgnoreCase(answerRequest.getSelectedOptions())){
-           UserNextLevelServiceImpl userNextLevelService = new UserNextLevelServiceImpl();
            userNextLevelService.setNextLevel(answerRequest.getUserName());
            return "Congratulations! You have done well";
        }

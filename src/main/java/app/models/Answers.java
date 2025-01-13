@@ -7,9 +7,13 @@ import lombok.Data;
 @Data
 @Table(name = "answers")
 public class Answers {
-    @Column(name = "answer")
-    private String answer;
+
     @Id
     @Column(name = "id")
-    private long currentLevel;
+    private int id;
+    @Column(name = "question_id")
+    private int questionId;
+    @Column(name = "correct_answer")
+    private String answer;
+
 }

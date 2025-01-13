@@ -1,5 +1,6 @@
 package app.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,11 +11,18 @@ import java.util.List;
 @Table(name = "questions")
 public class Questions {
     @Id
+    @Column(name = "id")
     private long id;
-    @Column(name = "questions")
+    @Column(name = "question")
     private String question;
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Column(name = "options")
-    private List<String>  options;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Options>  options;
+
+
+    @Override
+    public String toString() {
+        return "Questions{id=" + id + ", question='" + question + "'}";
+    }
 }

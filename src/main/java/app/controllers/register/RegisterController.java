@@ -5,10 +5,7 @@ import app.repositories.UsersRepository;
 import app.services.userServices.register.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/quiz")
@@ -20,6 +17,8 @@ public class RegisterController {
     @Autowired
     private UsersRepository usersRepository;
 
+
+    @CrossOrigin("*")
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
         try{

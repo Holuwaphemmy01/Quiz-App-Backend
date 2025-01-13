@@ -23,23 +23,20 @@ class QuestionsServiceImplTest {
 
     @Test
     public void testToGetQuestionsFrom1to10() {
-        QuestionsRequest questionsRequest = new QuestionsRequest();
-        questionsRequest.setUserName("Fammo");
-        questionsRequest.setCurrentLevel(1);
-        List<Questions> response =  questionsService.getAllQuestions(questionsRequest);
+        List<Questions> response =  questionsService.getAllQuestions("o-jacob");
         System.out.println(response.toString());
         assertEquals(10, response.size());
     }
 
 
-    @Test
-    public void testToGetQu() {
-        Questions questions = new Questions();
-        questions.setId(101);
-        questions.setQuestion("who are you?");
-        questions.setOptions(List.of("one", "two", "three"));
-        Optional<Questions> response = questionsRepository.findById(Long.valueOf(1));
-        System.out.println(response.toString());
-
-    }
+//    @Test
+//    public void testToGetQu() {
+//        Questions questions = new Questions();
+//        questions.setId(101);
+//        questions.setQuestion("who are you?");
+//        questions.setOptions(List.of("one", "two", "three"));
+//        Optional<Questions> response = questionsRepository.findById(Long.valueOf(1));
+//        System.out.println(response.toString());
+//
+//    }
 }

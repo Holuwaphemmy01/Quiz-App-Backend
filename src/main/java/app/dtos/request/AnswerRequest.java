@@ -2,9 +2,10 @@ package app.dtos.request;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class AnswerRequest {
     private String userName;
-    private int currentLevel;
-    private String selectedOptions;
+    private List<String> selectedOptions;
 }

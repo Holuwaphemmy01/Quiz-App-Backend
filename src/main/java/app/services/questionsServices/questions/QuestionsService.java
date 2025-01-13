@@ -7,5 +7,5 @@ import app.models.Questions;
 import java.util.List;
 
 public interface QuestionsService {
-    List<Questions> getAllQuestions(QuestionsRequest questionsRequest);
+    List<Questions> getAllQuestions(String username);
 }
